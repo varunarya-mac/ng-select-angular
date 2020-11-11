@@ -1,0 +1,157 @@
+<div style="width: 40%;">
+<div style="display: block;">
+    <p>Single dropdown!</p>
+    <ng-select class="custom1" [items]="cars" 
+               bindLabel="name" 
+               bindValue="id" 
+               placeholder="select item"
+               [searchable]="false"
+               [clearable]="false"
+               [(ngModel)]="selectedCar">
+    </ng-select>
+    </div>
+
+    
+<div style="display: block;">
+    <p>multiple dropdown!</p>
+    <ng-select #select class="custom1" [items]="cars" 
+               bindLabel="name" 
+               bindValue="id" 
+               placeholder="select item"
+               [closeOnSelect]="false"
+               [clearable]="false"
+               [searchable]="false"
+               [multiple]=true
+               >
+               <ng-template ng-header-tmp>
+                <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+            </ng-template>
+    </ng-select>
+    </div>
+
+    <div style="display: block;">
+        <p>multiple dropdown with different colors</p>
+        <ng-select class="custom3 custom1" [items]="cars" 
+                   bindLabel="name" 
+                   bindValue="id" 
+                   placeholder="select item"
+                   [closeOnSelect]="false"
+                   [clearable]="false"
+                   [searchable]="false"
+                   [multiple]="true"
+                   (change)="onChange($event)"
+                   (open)="onChange($event)"
+                   >
+        </ng-select>
+        </div>
+
+    <div style="display: block;">
+        <p>multiple dropdown with checkbox</p>       
+        <ng-select class="custom1"
+            [items]="cars"
+            [multiple]="true"
+            bindLabel="name"
+            placeholder="select item"
+            [clearable]="false"
+            [searchable]="false"
+            [closeOnSelect]="false"
+            bindValue="id"
+            >
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.name}}
+        </ng-template>
+        </ng-select>
+        </div>
+
+
+        <div style="display: block;">
+            <p>Select All!</p>   
+
+        <ng-select
+        class="custom1"
+        [items]="cars"
+        [multiple]="true"
+        bindLabel="name"
+        placeholder="select item"
+        [clearable]="false"
+        [searchable]="false"
+        
+        groupBy="group"
+        [selectableGroup]="true"
+        [selectableGroupAsModel]="false"
+
+        [closeOnSelect]="false"
+        bindValue="id"
+        [(ngModel)]="selectedPeople">
+        <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.group}}
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.name}}
+        </ng-template>
+        </ng-select>
+        </div>
+
+
+
+
+
+        <div style="display: block;">
+            <p>Placeholder slider!</p>
+            <ng-select class="custom custom1" [items]="cars" 
+                bindLabel="name" 
+                [clearable]="false"
+                bindValue="id" 
+                placeholder="select item"
+                [searchable]="false"
+            >
+        </ng-select>
+        </div>
+
+        <div style="display: block;">
+            <p>Multiple select Placeholder slider!</p>
+            <ng-select class="custom custom1" [items]="cars" 
+                bindLabel="name" 
+                [multiple]="true"
+                [clearable]="false"
+                bindValue="id" 
+                placeholder="select item"
+                [searchable]="false"
+            >
+        </ng-select>
+        </div>
+
+        <div style="display: block;">
+            <p>Auto fill with multiple values!</p>
+            <ng-select class="custom2" [items]="cars" 
+                bindLabel="name" 
+                bindValue="id" 
+                placeholder="select item"
+                [clearable]="false"
+                [searchable]="true"
+                [editableSearchTerm]="true"
+                [multiple]=true
+            >
+        </ng-select>
+        </div>
+        
+        <div style="display: block;">
+        <p>Label with icon!</p>    
+        <ng-select class="custom1"
+        [items]="cars"  [searchable]="false" 
+        [clearable]="false"
+        placeholder="select item" [(ngModel)]="selectedCity"
+        bindLabel="name" bindValue="id">
+            <ng-template ng-label-tmp let-item="item">
+                <img style=" margin-top: 5px; margin-right: 5px;" height="13" width="13" [src]="item.avatar"/>
+                {{item.name}}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                <img height="15" width="15" [src]="item.avatar"/>
+                    {{item.name}}    
+            </ng-template>
+        </ng-select>
+        </div>
+
+
+       </div>    
